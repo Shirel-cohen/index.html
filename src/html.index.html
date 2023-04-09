@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Exercise 1</title>
+    <script>
+        function calculate() {
+            var num1 = document.getElementById("num1").value;
+            var num2 = document.getElementById("num2").value;
+            var operator = document.getElementById("operator-select").value;
+            var result;
+
+            if (operator === "add") {
+                result = parseFloat(num1) + parseFloat(num2);
+            } else if (operator === "subtract") {
+                result = parseFloat(num1) - parseFloat(num2);
+            } else if (operator === "multiply") {
+                result = parseFloat(num1) * parseFloat(num2);
+            } else if (operator === "divide") {
+                result = parseFloat(num1) / parseFloat(num2);
+            }
+
+            document.getElementById("result").value = result;
+        }
+    </script>
+</head>
+
+<body>
+
+<div class="calculate">
+    <p>Exercise 1 - Shirel Cohen</p>
+
+<input type="number" id="num1" name="num1" placeholder="Enter the first number">
+<select id="operator-select" name="operator">
+    <option value="add">+</option>
+    <option value="subtract">-</option>
+    <option value="multiply">x</option>
+    <option value="divide">/</option>
+</select>
+<input type="number" id="num2" name="num2" placeholder="Enter the second number">
+
+<button  onclick="calculate()">=</button>
+<input  id="result" name="result">
+</div>
+</body>
+</html>

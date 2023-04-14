@@ -4,23 +4,47 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Exercise 1</title>
     <script>
+        var calculations = [];
         function calculate() {
             var num1 = document.getElementById("num1").value;
             var num2 = document.getElementById("num2").value;
             var operator = document.getElementById("operator-select").value;
+            var operatorSign;
             var result;
 
             if (operator === "add") {
+                operatorSign = "+";
                 result = parseFloat(num1) + parseFloat(num2);
             } else if (operator === "subtract") {
+                operatorSign = "-";
                 result = parseFloat(num1) - parseFloat(num2);
             } else if (operator === "multiply") {
+                operatorSign = "x";
                 result = parseFloat(num1) * parseFloat(num2);
             } else if (operator === "divide") {
+                operatorSign = "/";
                 result = parseFloat(num1) / parseFloat(num2);
             }
 
-            document.getElementById("result").value = result;
+            calculations.push({num1: num1, num2: num2, operator: operatorSign, result: result}); // add current calculation to array
+
+            var table = document.getElementById("history-table"); // get reference to the table element
+            var newRow = table.insertRow(); // create a new row in the table
+
+            var num1Cell = newRow.insertCell(0); // add cells to the row and populate them with the calculation data
+            num1Cell.innerHTML = num1;
+
+            var operatorCell = newRow.insertCell(1);
+            operatorCell.innerHTML = operatorSign;
+
+            var num2Cell = newRow.insertCell(2);
+            num2Cell.innerHTML = num2;
+
+            var resultCell = newRow.insertCell(3);
+            resultCell.innerHTML = result;
+
+            document.getElementById("result").value = result; // update result field
+
         }
     </script>
 </head>
@@ -41,6 +65,22 @@
 
 <button  onclick="calculate()">=</button>
 <input  id="result" name="result">
+    <table id="history-table">
+        <thead>
+        <tr>
+            <th>Number 1</th>
+            <th>Operator</th>
+            <th>Number 2</th>
+            <th>Result</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- table body will be populated dynamically -->
+        </tbody>
+    </table>
+    <img src="https://media.tenor.com/XpXsPDTXhYQAAAAC/math-numbers.gif" alt="My GIF Image">
+
+
 </div>
 </body>
 </html>

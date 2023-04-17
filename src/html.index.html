@@ -28,6 +28,7 @@
 
             calculations.push({num1: num1, num2: num2, operator: operatorSign, result: result}); // add current calculation to array
 
+
             var table = document.getElementById("history-table"); // get reference to the table element
             var newRow = table.insertRow(); // create a new row in the table
 
@@ -45,6 +46,12 @@
 
             document.getElementById("result").value = result; // update result field
 
+            // clear input fields
+            document.getElementById("num1").value = "";
+            document.getElementById("num2").value = "";
+            document.getElementById("operator-select").selectedIndex = 0;
+            document.getElementById("result").value = "";
+
         }
     </script>
 </head>
@@ -52,7 +59,8 @@
 <body>
 
 <div class="calculate">
-    <p>Exercise 1 - Shirel Cohen</p>
+    <p>Exercise 1 - Shirel Cohen &#128522; </p>
+
 
 <input type="number" id="num1" name="num1" placeholder="Enter the first number">
 <select id="operator-select" name="operator">
@@ -74,9 +82,7 @@
             <th>Result</th>
         </tr>
         </thead>
-        <tbody>
-        <!-- table body will be populated dynamically -->
-        </tbody>
+
     </table>
     <img src="https://media.tenor.com/XpXsPDTXhYQAAAAC/math-numbers.gif" alt="My GIF Image">
 
